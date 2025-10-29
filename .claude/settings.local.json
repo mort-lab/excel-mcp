@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//tmp/mcp-servers-examples/src/git/src/mcp_server_git/**)",
+      "Read(//private/tmp/mcp-servers-examples/src/git/src/mcp_server_git/**)",
+      "Read(//private/tmp/**)",
+      "Read(//tmp/fastmcp-repo/**)",
+      "Bash(tree:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
