@@ -8,6 +8,7 @@ A comprehensive [Model Context Protocol](https://modelcontextprotocol.io) (MCP) 
 ## Features
 
 ### Core Operations
+
 - **📊 Workbook Management**: Create, open, save Excel workbooks
 - **📄 Sheet Operations**: Create, delete, rename, copy worksheets
 - **📝 Cell Operations**: Read and write individual cells or ranges
@@ -15,6 +16,7 @@ A comprehensive [Model Context Protocol](https://modelcontextprotocol.io) (MCP) 
 - **🎨 Rich Formatting**: Fonts, colors, borders, alignment, number formats
 
 ### Key Capabilities
+
 - ✅ No Excel installation required (uses openpyxl)
 - ✅ Type-safe operations with Pydantic validation
 - ✅ Comprehensive error handling
@@ -39,7 +41,7 @@ pip install excel-mcp-server
 ### From Source
 
 ```bash
-git clone https://github.com/yourusername/excel-mcp-server
+git clone https://github.com/mort-lab/excel-mcp
 cd excel-mcp-server
 uv sync
 ```
