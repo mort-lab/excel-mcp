@@ -3,6 +3,25 @@
 from typing import Any
 
 from fastmcp import FastMCP
+from pydantic import BaseModel, Field
+
+try:
+    from smithery.decorators import smithery
+except ImportError:
+    # Fallback decorator for local development when smithery is not installed
+    from typing import Callable, TypeVar
+
+    T = TypeVar('T', bound=Callable[..., Any])
+
+    class _SmitheryFallback:
+        @staticmethod
+        def server(config_schema: type[BaseModel] | None = None) -> Callable[[T], T]:  # noqa: ARG004
+            """Fallback decorator when smithery is not installed."""
+            def decorator(func: T) -> T:
+                return func
+            return decorator
+
+    smithery = _SmitheryFallback()
 
 from . import operations
 from .models import (
@@ -19,8 +38,29 @@ from .models import (
     SheetRenameRequest,
 )
 
-# Initialize FastMCP server
-mcp = FastMCP("Excel MCP Server")
+
+# Configuration schema for session (optional)
+class ConfigSchema(BaseModel):
+    """Configuration schema for Excel MCP Server sessions."""
+
+    default_file_path: str = Field(
+        "~/Documents",
+        description="Default directory for Excel file operations"
+    )
+
+
+@smithery.server(config_schema=ConfigSchema)
+def create_server():
+    """Create and configure the Excel MCP server."""
+
+    # Initialize FastMCP server
+    mcp = FastMCP("Excel MCP Server")
+
+    return mcp
+
+
+# For backward compatibility - create default instance
+mcp = create_server()
 
 
 # ==================== WORKBOOK OPERATIONS ====================
