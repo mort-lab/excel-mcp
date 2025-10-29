@@ -5,7 +5,9 @@
       "Read(//private/tmp/mcp-servers-examples/src/git/src/mcp_server_git/**)",
       "Read(//private/tmp/**)",
       "Read(//tmp/fastmcp-repo/**)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(export PATH=\"$HOME/.local/bin:$PATH\")",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

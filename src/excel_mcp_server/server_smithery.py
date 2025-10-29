@@ -45,7 +45,8 @@ class ConfigSchema(BaseModel):
     """Configuration schema for Excel MCP Server sessions."""
 
     default_file_path: str = Field(
-        "~/Documents", description="Default directory for Excel file operations"
+        default="~/Documents",
+        description="Default directory for Excel file operations"
     )
 
 
