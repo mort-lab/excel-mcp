@@ -426,5 +426,12 @@ def create_server():
 # ==================== ENTRY POINT ====================
 
 if __name__ == "__main__":
+    import os
     server = create_server()
-    server.run()
+
+    # Run in HTTP mode for Smithery, stdio for local
+    transport = os.getenv("MCP_TRANSPORT", "stdio")
+    if transport == "sse":
+        server.run(transport="sse")
+    else:
+        server.run()
